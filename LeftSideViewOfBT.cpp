@@ -11,7 +11,7 @@ struct Node {
     }
 };
 
-void RightSideView(Node *root, int level, vector<int> &ans);
+void LeftSideView(Node *root, int level, vector<int> &ans);
 
 int main() {
     struct Node *root = new Node(1);
@@ -24,15 +24,15 @@ int main() {
     root->right->right->right = new Node(8);
 
     vector<int> ans;
-    RightSideView(root, 0, ans);
+    LeftSideView(root, 0, ans);
     for (auto it: ans) cout << it << " " ;
 
     return 0;
 }
 
-void RightSideView(Node *root, int level, vector<int> &ans) {
+void LeftSideView(Node *root, int level, vector<int> &ans) {
     if (root == NULL) return;
     if (ans.size() == level) ans.push_back(root->data);
-    RightSideView(root->left, level + 1, ans);
-    RightSideView(root->right, level + 1, ans);
+    LeftSideView(root->left, level + 1, ans);
+    LeftSideView(root->right, level + 1, ans);
 }
